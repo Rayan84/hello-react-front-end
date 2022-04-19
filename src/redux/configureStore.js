@@ -4,7 +4,7 @@ import logger from 'redux-logger';
 import greetings from './greetings/greetings';
 
 const reducer = combineReducers({
-  greetings: greetingsReducer,
+  greetings: greetingsReducer
 });
 
 const store = createStore(reducer, applyMiddleware(logger, reduxThunk));
