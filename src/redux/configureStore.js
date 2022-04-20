@@ -1,8 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import logger from 'redux-logger';
-import greetingsReducer from './greetings/greetings';
-
+import greetingsReducer from './reducers/greetingReducer';
 const reducer = combineReducers({
   greetings: greetingsReducer
 });
