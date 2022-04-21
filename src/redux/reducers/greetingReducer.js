@@ -1,22 +1,29 @@
 const initialState = {
-  msge: 'Hi',
-  arr: ['Hello', 'Good Morning!', 'Howdy', 'Salute']
+  loading: false,
+  error: '',
+  msg: 'Hi',
 }
 
 const greetingsReducer = (state = initialState, action) => {
   switch(action.type){
-    case 'shuffle':{
-      console.log('Shuffle detected...');
-      console.log(state.arr);
-      let random = Math.floor(Math.random()*state.arr.length);
-      console.log(random)
-      console.log(random);
-      let newMsg = state.arr[random];
-      const newState = {
-        arr: state.arr,
-        msg: newMsg
+    case 'fetchGreetingsMessagesRequest':{
+      console.log('Requesting API report from Reducer....');
+      return {
+        loading: true,
+        error: '',
+        msg: '',
+        arr: []
       }
-      return newState;
+    }
+
+    case 'FETCH_GREETINGS_MESSAGES_SUCCESS':{
+      console.log('API Fetched successfully...');
+      const newState = {
+        loading: false,
+        error: '',
+        msg: action.payload
+      };
+      return newState
     }
 
     default:
@@ -27,3 +34,4 @@ const greetingsReducer = (state = initialState, action) => {
 }
 
 export default greetingsReducer;
+
