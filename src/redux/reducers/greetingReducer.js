@@ -24,6 +24,13 @@ const greetingsReducer = (state = initialState, action) => {
         msg: action.payload
       };
       return newState
+    };
+    case 'FETCH_GREETINGS_MESSAGES_FAILURE':{
+      return {
+        loading: false,
+        error: action.payload,
+        msg: action.payload
+      }
     }
 
     default:
