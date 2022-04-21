@@ -2,43 +2,38 @@ const initialState = {
   loading: false,
   error: '',
   msg: 'Hi',
-}
+};
 
 const greetingsReducer = (state = initialState, action) => {
-  switch(action.type){
-    case 'fetchGreetingsMessagesRequest':{
-      console.log('Requesting API report from Reducer....');
+  switch (action.type) {
+    case 'fetchGreetingsMessagesRequest': {
       return {
         loading: true,
         error: '',
         msg: '',
-        arr: []
-      }
+        arr: [],
+      };
     }
 
-    case 'FETCH_GREETINGS_MESSAGES_SUCCESS':{
-      console.log('API Fetched successfully...');
+    case 'FETCH_GREETINGS_MESSAGES_SUCCESS': {
       const newState = {
         loading: false,
         error: '',
-        msg: action.payload
+        msg: action.payload,
       };
-      return newState
-    };
-    case 'FETCH_GREETINGS_MESSAGES_FAILURE':{
+      return newState;
+    }
+    case 'FETCH_GREETINGS_MESSAGES_FAILURE': {
       return {
         loading: false,
         error: action.payload,
-        msg: action.payload
-      }
+        msg: action.payload,
+      };
     }
 
     default:
       return state;
   }
-
-  
-}
+};
 
 export default greetingsReducer;
-
